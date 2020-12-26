@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
+    <RootNamespace>Klkn.Threading</RootNamespace>
+	  <Product />
+	  <Company>Mikhail Kliukin</Company>
+	  <Authors>Mikhail Kliukin</Authors>
+		<Copyright>Mikhail Kliukin @ 2018</Copyright>
+	  <Description>STA TaskScheduler Limited Cuncurrency</Description>
+	  <ErrorReport>prompt</ErrorReport>
+	  <WarningLevel>4</WarningLevel>
+	  <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	</PropertyGroup>
+</Project>
