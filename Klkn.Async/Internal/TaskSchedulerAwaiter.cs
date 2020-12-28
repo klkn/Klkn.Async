@@ -8,7 +8,7 @@ namespace Klkn.Async.Internal
 	/// <summary>
 	/// Awaiter for Task Factory
 	/// </summary>
-	public struct TaskSchedulerAwaiter : INotifyCompletion
+	public class TaskSchedulerAwaiter : RollbackAwaiter, INotifyCompletion
 	{
 		private readonly TaskScheduler _taskScheduler;
 		private readonly TaskCreationOptions _taskCreationOptions;
@@ -19,6 +19,7 @@ namespace Klkn.Async.Internal
 			_taskCreationOptions = taskCreationOptions;
 		}
 
+		#region Awaiter
 
 		/// <summary>
 		/// Check context
@@ -42,16 +43,9 @@ namespace Klkn.Async.Internal
 		/// <summary>
 		/// Get Result
 		/// </summary>
-		public void GetResult() { }
+        public IAsyncDisposable GetResult() => this;
 
-		/// <summary>
-		/// To Awaiter, if we used ConfigureAwait
-		/// </summary>
-		/// <returns></returns>
-		public TaskSchedulerAwaiter GetAwaiter()
-		{
-			return this;
-		}
+		#endregion Awaiter
 
 	}
 }

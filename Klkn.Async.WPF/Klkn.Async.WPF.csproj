@@ -2,7 +2,16 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net48</TargetFrameworks>
+	  <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Klkn.Async\Klkn.Async.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="WindowsBase" />

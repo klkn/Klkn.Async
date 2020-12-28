@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
 
 namespace Klkn.Async.Internal
 {
 	/// <summary>
 	/// Awaiter for switch to ThreadPool
 	/// </summary>
-	public class ThreadPoolAwaiter : INotifyCompletion
+	public class ThreadPoolAwaiter : RollbackAwaiter, INotifyCompletion
 	{
 		private readonly bool _forceSwitch;
 
@@ -16,14 +18,7 @@ namespace Klkn.Async.Internal
 			_forceSwitch = forceSwitch;
 		}
 
-		/// <summary>
-		/// Create new task in pool request
-		/// </summary>
-		/// <returns></returns>
-		public ThreadPoolAwaiter ForceSwitch()
-		{
-			return new ThreadPoolAwaiter(true);
-		}
+        #region Awaiter
 
 		/// <summary>
 		/// Check context
@@ -47,15 +42,9 @@ namespace Klkn.Async.Internal
 		/// <summary>
 		/// Get Result
 		/// </summary>
-		public void GetResult() { }
+        public IAsyncDisposable GetResult() => this;
 
-		/// <summary>
-		/// To Awaiter, if we used ConfigureAwait
-		/// </summary>
-		/// <returns></returns>
-		public ThreadPoolAwaiter GetAwaiter()
-		{
-			return this;
-		}
+		#endregion Awaiter
+
 	}
 }

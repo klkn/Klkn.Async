@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
+using Klkn.Async.Internal;
 
 namespace Klkn.Async.WPF.Internal
 {
 	/// <summary>
 	/// Awaiter for switching to Dispatcher
 	/// </summary>
-	public struct DispatcherAwaiter : INotifyCompletion
+	public class DispatcherAwaiter : RollbackAwaiter, INotifyCompletion
 	{
 		private readonly Dispatcher _dispatcher;
 		private readonly DispatcherPriority _priority;

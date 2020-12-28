@@ -46,10 +46,11 @@ namespace Klkn.Async.Internal
 		/// <summary>
 		/// Get Result
 		/// </summary>
-		public void GetResult()
+		public IAsyncDisposable GetResult()
 		{
 			Task.Wait();
-		}
+			return this;
+        }
 
 		/// <summary>
 		/// To Awaiter, if we used ConfigureAwait
@@ -64,7 +65,7 @@ namespace Klkn.Async.Internal
 	/// <summary>
 	/// Awaiter to continue Task
 	/// </summary>
-	public abstract class TaskTaskSchedulerAwaiterBase : INotifyCompletion
+	public abstract class TaskTaskSchedulerAwaiterBase : RollbackAwaiter, INotifyCompletion
 	{
 		protected readonly Task Task;
 		private readonly TaskScheduler _taskScheduler;

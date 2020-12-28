@@ -8,16 +8,16 @@ namespace Klkn.Async
 	/// Await Helpers
 	/// </summary>
 	public static class Await
-	{
-		/// <summary>
-		/// Switching to ThreadPool
-		/// </summary>
-		public static ThreadPoolAwaiter ThreadPool { get; } = new ThreadPoolAwaiter(false);
+    {
+        /// <summary>
+        /// Switching to ThreadPool
+        /// </summary>
+        public static ThreadPoolAwaitProvider ThreadPool { get; } = new ThreadPoolAwaitProvider(false);
 
 		/// <summary>
 		/// Switching to Sta
 		/// </summary>
-		public static TaskSchedulerAwaiter StaPool { get; } = new TaskSchedulerAwaiter(StaTaskScheduler.Scheduler, TaskCreationOptions.None);
+		public static AwaitProvider<TaskSchedulerAwaiter> StaPool { get; } = new AwaitProvider<TaskSchedulerAwaiter>(() => new TaskSchedulerAwaiter(StaTaskScheduler.Scheduler, TaskCreationOptions.None));
 
 		/// <summary>
 		/// Continue in STA Thread

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
+	  <LangVersion>8.0</LangVersion>
     <RootNamespace>Klkn.Threading</RootNamespace>
 	  <Product />
 	  <Company>Mikhail Kliukin</Company>

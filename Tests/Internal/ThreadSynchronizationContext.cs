@@ -28,6 +28,7 @@ namespace Tests.Internal
 
 		private void ThreadScope()
 		{
+			SynchronizationContext.SetSynchronizationContext(this);
 			foreach (var item in _queue.GetConsumingEnumerable())
 			{
 				try

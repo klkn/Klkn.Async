@@ -35,17 +35,18 @@ namespace Klkn.Async.Internal
 		/// <summary>
 		/// Get Result
 		/// </summary>
-		public void GetResult()
+		public IAsyncDisposable GetResult()
 		{
 			Task.Wait();
-		}
+            return this;
+        }
 
 	}
 
 	/// <summary>
 	/// Awaiter to continue process in particular SynchronizationContext
 	/// </summary>
-	public abstract class TaskSynchronizationContextAwaiterBase : INotifyCompletion
+	public abstract class TaskSynchronizationContextAwaiterBase : RollbackAwaiter, INotifyCompletion
 	{
 		protected readonly Task Task;
 		private readonly SynchronizationContext _synchronizationContext;

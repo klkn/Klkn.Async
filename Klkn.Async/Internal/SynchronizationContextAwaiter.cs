@@ -8,7 +8,7 @@ namespace Klkn.Async.Internal
 	/// Awaiter to particular SynchronizationContext
 	/// await SynchronizationContext
 	/// </summary>
-	public struct SynchronizationContextAwaiter : INotifyCompletion
+	public class SynchronizationContextAwaiter : RollbackAwaiter, INotifyCompletion
 	{
 		private readonly SynchronizationContext _synchronizationContext;
 
@@ -35,10 +35,10 @@ namespace Klkn.Async.Internal
 			}, null);
 		}
 
-		/// <summary>
-		/// Get Result
-		/// </summary>
-		public void GetResult() { }
+        /// <summary>
+        /// Get Result
+        /// </summary>
+        public IAsyncDisposable GetResult() => this;
 
-	}
+    }
 }
